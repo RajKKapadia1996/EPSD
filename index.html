@@ -103,5 +103,17 @@
   <footer>
     © 2025 Smash Room XR Concept — Plain HTML demo
   </footer>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").then(() => {
+        console.log("✅ Service Worker Registered");
+      }).catch(err => {
+        console.log("❌ Service Worker registration failed: ", err);
+      });
+    }
+  </script>
 </body>
 </html>
+
