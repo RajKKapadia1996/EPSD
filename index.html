@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smash Room XR – Video Demo (Fixed Paths)</title>
+  <style>
+    :root { --ink:#111; --muted:#666; --bg:#f5f7fa; --card:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+    header { background:#000; color:#fff; padding:28px 20px; text-align:center; }
+    main { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+    h1,h2,h3 { margin: 0 0 12px 0; }
+    p { margin: 8px 0 16px; color: var(--muted); }
+    .btn { display:inline-block; background:#000; color:#fff; padding:10px 14px; border-radius:8px; text-decoration:none; cursor:pointer; font-size:14px; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background:var(--card); border-radius:14px; padding:18px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    footer { margin-top: 24px; background:#222; color:#ddd; text-align:center; padding:20px; font-size: 14px; }
+    .video-wrapper { display:none; margin-top:12px; border-radius:12px; overflow:hidden; }
+    .video-wrapper video { width:100%; height:315px; }
+    small.hint { color:var(--muted); display:block; margin-top:6px; }
+  </style>
+  <script>
+    function toggleVideo(id) {
+      const wrappers = document.querySelectorAll('.video-wrapper');
+      const videos = document.querySelectorAll('video');
+      wrappers.forEach(w => { if (w.id !== id) w.style.display = 'none'; });
+      videos.forEach(v => { if (v.parentElement.id !== id) { v.pause(); v.currentTime = 0; } });
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🔥 Smash Room XR</h1>
+    <p>AR/VR Concept Website Prototype with Video Demo</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>Experience smashing objects in Augmented and Virtual Reality — anytime, anywhere.</p>
+      <a class="btn" href="#features">See Features</a>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="grid">
+        <!-- Virtual Smash Room -->
+        <div class="card">
+          <h3>🕶 Virtual Smash Room</h3>
+          <p>Put on a VR headset and smash TVs, laptops, and more with realistic effects.</p>
+          <button class="btn" onclick="toggleVideo('videoVR')">Watch Demo</button>
+          <div class="video-wrapper" id="videoVR">
+            <video controls preload="metadata" poster="">
+              <source src="vr.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <small class="hint">If this shows 0:00, make sure the file name is exactly <b>vr.mp4</b> and it’s in the same folder as this HTML.</small>
+          </div>
+        </div>
+
+        <!-- AR Teaser -->
+        <div class="card">
+          <h3>📱 AR Teaser</h3>
+          <p>Point your phone at any surface to see plates and bottles shatter in Augmented Reality.</p>
+          <button class="btn" onclick="toggleVideo('videoAR')">Watch Demo</button>
+          <div class="video-wrapper" id="videoAR">
+            <video controls preload="metadata" poster="">
+              <source src="ar.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <small class="hint">If this shows 0:00, make sure the file name is exactly <b>ar.mp4</b> and it’s in the same folder as this HTML.</small>
+          </div>
+        </div>
+
+        <!-- Leaderboards -->
+        <div class="card">
+          <h3>🏆 Leaderboards</h3>
+          <p>Compete with friends and track who’s the ultimate smasher.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Booking</h2>
+      <p>Choose your smash experience:</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Physical Session</h3>
+          <p>Visit our Dubai venue — real smashing, real fun!</p>
+        </div>
+        <div class="card">
+          <h3>VR Subscription</h3>
+          <p>Play at home with your own headset for AED 99/month.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Smash Room XR Concept — Plain HTML demo
+  </footer>
+</body>
+</html>
